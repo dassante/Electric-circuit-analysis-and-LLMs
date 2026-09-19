@@ -1,0 +1,564 @@
+* Circuit TRAN.01
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: V(n3,0)
+* Calculate: i4(t): positive through element 4, n3 -> n2
+R1 n3 0 0.6
+I2 n1 0 DC 2.5
+S3 n1 n3 ctrl3 0 SWMOD
+VCTRL3 ctrl3 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+L4 n3 n2 2
+R5 n2 n1 2
+R6 n1 n3 0.75
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.02
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: i1(t): positive through element 1, n1 -> n2
+* Calculate: i5(t): positive through element 5, n2 -> n3
+L1 n1 n2 0.8
+S2 n1 0 ctrl2 0 SWMOD
+VCTRL2 ctrl2 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+R3 0 n3 0.25
+I4 n1 n3 DC 5
+R5 n2 n3 1
+R6 n1 0 1
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.03
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: i3(t): positive through element 3, 0 -> n2
+* Calculate: V(0,n2)
+S1 n3 n1 ctrl1 0 SWMOD
+VCTRL1 ctrl1 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+V2 n1 0 DC 2
+L3 0 n2 1
+R4 n1 n3 1
+R5 n2 n3 0.333333333333333
+R6 n3 n1 1
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.04
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: i3(t): positive through element 3, n2 -> n3
+* Calculate: V(0,n2)
+R1 n1 0 2
+S2 0 n2 ctrl2 0 SWMOD
+VCTRL2 ctrl2 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+L3 n2 n3 0.2
+I4 n1 n2 DC 1.5
+R5 n3 n1 1.66666666666667
+R6 0 n2 5
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.05
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v2(t) = V(n2,n3)
+* Calculate: v4(t) = V(0,n2)
+V1 n2 n3 DC 5
+R2 n2 n3 0.8
+S3 0 n1 ctrl3 0 SWMOD
+VCTRL3 ctrl3 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+C4 0 n2 4
+R5 0 n2 0.4
+R6 n1 n3 0.6
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.06
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v2(t) = V(n3,0)
+* Calculate: i5(t): positive through element 5, n3 -> 0
+V1 n2 n3 DC 3
+C2 n3 0 0.75
+R3 n2 0 1.66666666666667
+S4 n3 n1 ctrl4 0 SWMOD
+VCTRL4 ctrl4 0 DC 0 PULSE(0 1 1n 1n 1n 1e9 2e9)
+R5 n3 0 1
+R6 n1 0 2
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+
+* Circuit TRAN.07
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v2(t) = V(0,n2)
+* Calculate: v3(t) = V(0,n2)
+V1 n2 n3 DC 1
+R2 0 n2 1
+C3 0 n2 0.666666666666667
+S4 0 n1 ctrl4 0 SWMOD
+VCTRL4 ctrl4 0 DC 0 PULSE(0 1 1n 1n 1n 1e9 2e9)
+R5 0 n2 1.66666666666667
+R6 n1 n3 4
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.08
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v1(t) = V(n1,0)
+* Calculate: i5(t): positive through element 5, n1 -> 0
+C1 n1 0 0.75
+S2 n2 n3 ctrl2 0 SWMOD
+VCTRL2 ctrl2 0 DC 0 PULSE(0 1 1n 1n 1n 1e9 2e9)
+R3 n2 0 2
+I4 n2 n1 DC 2
+R5 n1 0 3
+R6 n3 n1 0.8
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.09
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: i2(t): positive through element 2, n3 -> n2
+* Calculate: i5(t): positive through element 5, n2 -> n1
+R1 0 n3 0.666666666666667
+L2 n3 n2 0.2
+V3 n1 0 DC 2
+S4 n3 n1 ctrl4 0 SWMOD
+VCTRL4 ctrl4 0 DC 0 PULSE(0 1 1n 1n 1n 1e9 2e9)
+R5 n2 n1 1
+R6 n3 n1 0.5
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.10
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v3(t) = V(0,n2)
+* Calculate: v5(t) = V(0,n2)
+I1 n2 n3 DC 0.25
+S2 0 n1 ctrl2 0 SWMOD
+VCTRL2 ctrl2 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+C3 0 n2 0.8
+R4 n2 n3 3
+R5 0 n2 0.5
+R6 n1 n3 0.5
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.11
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v2(t)= V(n1,0) for t>0
+* Calculate: v8(t)= V(n4,n1) for t>0
+L1 n4 n5 0.8
+I2 n1 0 DC 1.33333333333333 PULSE(1.33333333333333 0 1n 1n 1n 1e9 2e9)
+V3 0 n2 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+C4 n4 n1 0.333333333333333
+S5 n4 n3 ctrl5 0 SWMOD
+VCTRL5 ctrl5 0 DC 0 PULSE(0 1 1n 1n 1n 1e9 2e9)
+E6 n1 n2 n5 n2 0.25
+R7 n5 n2 1.33333333333333
+R8 n4 n1 0.5
+R9 n3 n1 1.25
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.12
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v5(t) = V(n4,n3) for t>0
+* Calculate: v9(t) = V(n4,0) for t>0
+I1 n4 n5 DC 0 PULSE(0 1.33333333333333 1n 1n 1n 1e9 2e9)
+S2 n4 0 ctrl2 0 SWMOD
+VCTRL2 ctrl2 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+E3 0 n1 n4 0 0.25
+L4 n5 n2 0.25
+L5 n4 n3 5
+V6 n5 n1 DC 0.5
+R7 n2 n1 1
+R8 n3 0 3
+R9 n4 0 0.6
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.13
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: i3(t): positive through element 3, n2 -> n4 for t>0
+* Calculate: v8(t) = V(n3,n1) for t>0
+V1 n5 n4 DC 0 PULSE(0 0.5 1n 1n 1n 1e9 2e9)
+F2 n2 n1 VSENSE8 1.25
+V3 n2 n4 DC 5
+C4 n1 n5 0.666666666666667
+L5 n5 n3 0.8
+S6 n4 0 ctrl6 0 SWMOD
+VCTRL6 ctrl6 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+R7 n1 n5 0.8
+R8 n3 ns8 0.6
+VSENSE8 ns8 n1 0
+R9 0 n1 1
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.14
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: i1(t): positive through element 1, n3 -> n4
+* Calculate: i6(t): positive through element 6, n4 -> 0
+L1 n3 n4 1
+L2 0 n1 1
+V3 n2 n3 DC 0.25
+R4 n2 0 5
+S5 n3 0 ctrl5 0 SWMOD
+VCTRL5 ctrl5 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+R6 n4 0 0.75
+R7 n1 n2 4
+R8 n3 0 0.5
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.15
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v1(t) = V(n3,n2)
+* Calculate: i5(t): positive through element 5, n3 -> n2
+C1 n3 n2 0.6
+L2 n2 0 0.5
+S3 n1 n4 ctrl3 0 SWMOD
+VCTRL3 ctrl3 0 DC 0 PULSE(0 1 1n 1n 1n 1e9 2e9)
+V4 n1 n2 DC 0.5 PULSE(0.5 0 1n 1n 1n 1e9 2e9)
+R5 n3 n2 2.5
+R6 n3 n2 0.5
+R7 0 n1 1.33333333333333
+R8 n4 n3 0.6
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.16
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v6(t) = V(n1,n3)
+* Calculate: i4(t): positive through element 4, n4 -> n2
+V1 n4 n3 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+R2 0 n4 0.5
+L3 0 n1 4
+L4 n4 n2 5
+S5 n3 0 ctrl5 0 SWMOD
+VCTRL5 ctrl5 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+R6 n1 n3 4
+R7 n2 n3 0.2
+R8 n3 0 1
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.17
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v4(t) = V(n4,n2)
+* Calculate: v5(t) = V(n2,n3)
+S1 0 n4 ctrl1 0 SWMOD
+VCTRL1 ctrl1 0 DC 0 PULSE(0 1 1n 1n 1n 1e9 2e9)
+I2 n2 0 DC 1.33333333333333
+L3 n4 n1 1
+R4 n4 n2 1.33333333333333
+L5 n2 n3 0.6
+R6 n3 n4 1
+R7 n1 n2 3
+R8 0 n4 1
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+
+* Circuit TRAN.18
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v6(t) = V(n1,n3)
+* Calculate: i7(t): positive through element 7, n2 -> 0
+C1 n2 0 2
+I2 0 n3 DC 4 PULSE(4 0 1n 1n 1n 1e9 2e9)
+S3 n3 n4 ctrl3 0 SWMOD
+VCTRL3 ctrl3 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+R4 n3 n2 1
+L5 0 n1 5
+R6 n1 n3 0.6
+R7 n2 0 1
+R8 n4 n2 2.5
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.19
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: i1(t): positive through element 1, n1 -> 0
+* Calculate: i5(t): positive through element 5, n3 -> n2
+R1 n1 0 1.66666666666667
+S2 0 n3 ctrl2 0 SWMOD
+VCTRL2 ctrl2 0 DC 0 PULSE(0 1 1n 1n 1n 1e9 2e9)
+L3 n1 n4 0.4
+I4 n1 0 DC 0 PULSE(0 0.6 1n 1n 1n 1e9 2e9)
+L5 n3 n2 0.8
+R6 n4 n3 1.5
+R7 n2 0 0.5
+R8 0 n3 0.25
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.20
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: i4(t): positive through element 4, n1 -> n4
+* Calculate: i6(t): positive through element 6, n4 -> n2
+C1 n4 n2 0.75
+V2 n1 n4 DC 3 PULSE(3 0 1n 1n 1n 1e9 2e9)
+L3 n1 0 0.5
+R4 n1 n4 2.5
+S5 n1 n3 ctrl5 0 SWMOD
+VCTRL5 ctrl5 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+R6 n4 n2 0.6
+R7 0 n2 1.5
+R8 n3 n2 0.8
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.21
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: i1(t): positive through element 1, n2 -> 0
+* Calculate: i3(t): positive through element 3, 0 -> n1
+C1 n2 0 2.5
+S2 n3 n2 ctrl2 0 SWMOD
+VCTRL2 ctrl2 0 DC 0 PULSE(0 1 1n 1n 1n 1e9 2e9)
+L3 0 n1 1
+R4 0 n2 2
+I5 n2 0 DC 0 PULSE(0 0.25 1n 1n 1n 1e9 2e9)
+R6 n1 n3 2
+R7 n2 0 5
+R8 n3 n2 0.4
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.22
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v5(t) = V(n1,0)
+* Calculate: i3(t): positive through element 3, 0 -> n2
+C1 n1 0 0.5
+S2 n1 n3 ctrl2 0 SWMOD
+VCTRL2 ctrl2 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+L3 0 n2 5
+I4 0 n3 DC 0.5 PULSE(0.5 0 1n 1n 1n 1e9 2e9)
+R5 n1 0 1
+R6 n2 n3 0.25
+R7 n1 0 0.6
+R8 n1 n3 1
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.23
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v1(t) = V(n1,n2)
+* Calculate: i7(t): positive through element 7, n1 -> 0
+I1 n1 n2 DC 0 PULSE(0 1.25 1n 1n 1n 1e9 2e9)
+S2 n2 n3 ctrl2 0 SWMOD
+VCTRL2 ctrl2 0 DC 0 PULSE(0 1 1n 1n 1n 1e9 2e9)
+R3 0 n2 0.25
+C4 0 n2 1
+C5 n1 0 1.66666666666667
+R6 0 n2 0.5
+R7 n1 0 2
+R8 n3 n1 4
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.24
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v4(t) = V(n1,n2)
+* Calculate: v6(t) = V(n1,0)
+I1 n2 n1 DC 0.4
+L2 n2 n3 1
+S3 0 n2 ctrl3 0 SWMOD
+VCTRL3 ctrl3 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+R4 n1 n2 5
+C5 n1 0 5
+R6 n1 0 3
+R7 n3 n1 4
+R8 0 n2 1
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.25
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v1(t) = V(n2,n4)
+* Calculate: v7(t) = V(n3,n4)
+C1 n2 n4 1
+I2 n1 n4 DC 0 PULSE(0 1 1n 1n 1n 1e9 2e9)
+G3 n2 n1 n1 n4 0.2
+S4 0 n1 ctrl4 0 SWMOD
+VCTRL4 ctrl4 0 DC 0 PULSE(0 1 1n 1n 1n 1e9 2e9)
+L5 0 n3 2
+V6 n2 n1 DC 0.25
+R7 n3 n4 1
+R8 n2 n4 1
+R9 0 n1 1
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.26
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: i2(t): positive through element 2, n3 -> n1
+* Calculate: i7(t): positive through element 7, 0 -> n1
+I1 n4 n2 DC 2
+C2 n3 ns2 2
+VSENSE2 ns2 n1 0
+L3 n3 0 0.5
+S4 n4 n2 ctrl4 0 SWMOD
+VCTRL4 ctrl4 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+H5 n3 n4 VSENSE2 2
+I6 n2 n1 DC 1
+R7 0 n1 0.25
+R8 n3 n1 0.6
+R9 n4 n2 1
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.27
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v1(t) = V(n1,n4)
+* Calculate: i8(t): positive through element 8, n3 -> n2
+C1 n1 n4 5
+I2 n2 n4 DC 0 PULSE(0 1 1n 1n 1n 1e9 2e9)
+G3 0 n2 n1 n4 3
+V4 0 n1 DC 0.8 PULSE(0.8 0 1n 1n 1n 1e9 2e9)
+S5 0 n2 ctrl5 0 SWMOD
+VCTRL5 ctrl5 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+L6 n1 n3 1
+R7 n1 n4 5
+R8 n3 n2 0.25
+R9 0 n2 1
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.28
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: i2(t): positive through element 2, n2 -> n4
+* Calculate: i8(t): positive through element 8, n1 -> n2
+S1 0 n3 ctrl1 0 SWMOD
+VCTRL1 ctrl1 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+L2 n2 n4 1
+I3 n1 0 DC 0 PULSE(0 0.333333333333333 1n 1n 1n 1e9 2e9)
+C4 n1 n2 0.5
+I5 0 n3 DC 2.5
+H6 n1 0 VSENSE8 1
+R7 n4 n3 1
+R8 n1 ns8 0.6
+VSENSE8 ns8 n2 0
+R9 0 n3 1.66666666666667
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.29
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v5(t) = V(n1,n3)
+* Calculate: v8(t) = V(n3,n2)
+I1 n2 0 DC 0 PULSE(0 1 1n 1n 1n 1e9 2e9)
+I2 n1 0 DC 0 PULSE(0 0.5 1n 1n 1n 1e9 2e9)
+C3 n2 n4 0.2
+S4 n1 n4 ctrl4 0 SWMOD
+VCTRL4 ctrl4 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+L5 n1 n3 1
+E6 n2 0 n2 n4 0.666666666666667
+R7 n2 n4 1.66666666666667
+R8 n3 n2 1.25
+R9 n1 n4 1
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end
+
+* Circuit TRAN.30
+* Dynamic circuit; transient analysis.
+* Node 0 is an arbitrary SPICE reference.
+* Switching instant is represented at t = 1 ns so the operating point establishes the t<0 steady-state conditions before commutation.
+* Calculate: v4(t) = V(n3,n4)
+* Calculate: v5(t) = V(n1,n3)
+S1 n1 n2 ctrl1 0 SWMOD
+VCTRL1 ctrl1 0 DC 1 PULSE(1 0 1n 1n 1n 1e9 2e9)
+I2 n1 0 DC 0 PULSE(0 2 1n 1n 1n 1e9 2e9)
+I3 0 n4 DC 0.333333333333333
+C4 n3 n4 1.66666666666667
+C5 n1 ns5 0.666666666666667
+VSENSE5 ns5 n3 0
+H6 0 n3 VSENSE5 1.5
+R7 n3 n4 4
+R8 n1 n3 1
+R9 n2 n3 1.5
+.model SWMOD SW(Ron=1u Roff=1e12 Vt=0.5 Vh=0)
+.tran 1m 100
+.end

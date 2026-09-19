@@ -1,0 +1,524 @@
+* Circuit AC.01
+* source v_{2}(t)=\frac{1}{5}\cos(\frac{5}{3}t-135^o)\,{\rm V}
+* omega = 1.66666666666667 rad/s ; f = 0.265258238486492 Hz
+* Node 0 is an arbitrary reference node.
+* Calculate v3 = V(n3,n1)
+* Calculate the reactive power Q5 at nodes (n2,0)
+F1 0 n3 VSENSE2 0.6
+V2 n1 ns2 AC 0.2 -135
+VSENSE2 ns2 0 0
+C3 n3 n1 3
+R4 n2 n3 3
+L5 n2 0 3
+R6 n2 n1 1.66666666666667
+.ac lin 1 0.265258238486492 0.265258238486492
+.end
+
+* Circuit AC.02
+* source i_{5}(t)=\frac{3}{2}\cos(\frac{5}{4}t+30^o)\,{\rm A}
+* omega = 1.25 rad/s ; f = 0.198943678864869 Hz
+* Node 0 is an arbitrary reference node.
+* Calculate v2 = V(n3,n1)
+* Calculate the active power P4 at nodes (n3,n2)
+E1 0 n2 n3 n1 0.4
+R2 n3 n1 1
+C3 n1 0 0.2
+R4 n3 n2 0.5
+I5 0 n2 AC 1.5 30
+C6 n3 n1 0.2
+.ac lin 1 0.198943678864869 0.198943678864869
+.end
+
+* Circuit AC.03
+* source v_{1}(t)=\frac{1}{4}\sin(\frac{3}{4}t-15^o)\,{\rm V}
+* omega = 0.75 rad/s ; f = 0.119366207318922 Hz
+* Node 0 is an arbitrary reference node.
+* Calculate v2 = V(n3,0)
+* Calculate the active power P6 at nodes (n3,n2)
+V1 n1 n2 AC 0.25 -105
+L2 n3 0 0.6
+R3 n1 n3 5
+C4 n3 n1 0.8
+E5 n1 0 n3 0 0.4
+R6 n3 n2 1.66666666666667
+.ac lin 1 0.119366207318922 0.119366207318922
+.end
+
+* Circuit AC.04
+* source i_{4}(t)=\frac{1}{3}\sin(\frac{1}{4}t-150^o)\,{\rm A}
+* omega = 0.25 rad/s ; f = 0.0397887357729738 Hz
+* Node 0 is an arbitrary reference node.
+* Calculate v1 = V(0,n2)
+* Calculate the active power P2 at nodes (n1,n3)
+R1 0 n2 1.25
+R2 n1 n3 0.25
+G3 n1 n3 0 n2 1
+I4 0 n2 AC 0.333333333333333 120
+C5 n3 n2 1
+C6 0 n1 3
+.ac lin 1 0.0397887357729738 0.0397887357729738
+.end
+
+* Circuit AC.05
+* source i_{6}(t)=\cos(\frac{1}{3}t+90^o)\,{\rm A}
+* omega = 0.333333333333333 rad/s ; f = 0.0530516476972984 Hz
+* Node 0 is an arbitrary reference node.
+* Calculate v1 = V(n2,0)
+* Calculate the reactive power Q5 at nodes (n1,n3)
+R1 n2 0 0.333333333333333
+E2 0 n1 n1 n3 2.5
+R3 n1 n3 1.33333333333333
+C4 n2 n3 1.66666666666667
+L5 n1 n3 4
+I6 n1 0 AC 1 90
+.ac lin 1 0.0530516476972984 0.0530516476972984
+.end
+
+* Circuit AC.06
+* source i_{4}(t)=\cos(5t-30^o)\,{\rm A}
+* omega = 5 rad/s ; f = 0.795774715459477 Hz
+* Node 0 is an arbitrary reference node.
+* Calculate v3 = V(n1,0)
+* Calculate the reactive power Q6 at nodes (0,n3)
+R1 n1 n3 1
+E2 n2 0 n1 0 2
+R3 n1 0 1
+I4 n2 n3 AC 1 -30
+C5 n1 0 1
+C6 0 n3 1
+.ac lin 1 0.795774715459477 0.795774715459477
+.end
+
+* Circuit AC.07
+* source i_{3}(t)=\sin(\frac{5}{2}t-75^o)\,{\rm A}
+* omega = 2.5 rad/s ; f = 0.397887357729738 Hz
+* Node 0 is an arbitrary reference node.
+* Calculate v1 = V(n2,0)
+* Calculate the reactive power Q4 at nodes (0,n1)
+L1 n2 0 0.75
+G2 n3 n1 0 n1 0.333333333333333
+I3 n3 n2 AC 1 -165
+C4 0 n1 0.5
+R5 n1 n3 1
+R6 0 n2 5
+.ac lin 1 0.397887357729738 0.397887357729738
+.end
+
+* Circuit AC.08
+* source i_{5}(t)=\frac{1}{4}\sin(\frac{4}{3}t)\,{\rm A}
+* omega = 1.33333333333333 rad/s ; f = 0.212206590789194 Hz
+* Node 0 is an arbitrary reference node.
+* Positive element voltage/current direction: first node -> second node.
+* Calculate v2 = V(0,ns2)
+* Calculate the active power P3 at nodes (n1,n2)
+C1 0 n1 2.5
+R2 0 ns2 1
+VSENSE2 ns2 n3 0
+R3 n1 n2 2.5
+C4 n2 n3 0.333333333333333
+I5 n1 n3 AC 0.25 -90
+F6 n3 0 VSENSE2 0.6
+.ac lin 1 0.212206590789194 0.212206590789194
+.end
+
+* Circuit AC.09
+* source i_{5}(t)=\frac{4}{5}\cos(\frac{4}{3}t+90^o)\,{\rm A}
+* omega = 1.33333333333333 rad/s ; f = 0.212206590789194 Hz
+* Node 0 is an arbitrary reference node.
+* Positive element voltage/current direction: first node -> second node.
+* Calculate v3 = V(n2,0)
+* Calculate the active power P4 at nodes (n2,n1)
+C1 n3 ns1 4
+VSENSE1 ns1 n1 0
+R2 n3 n1 0.6
+R3 n2 0 0.666666666666667
+C4 n2 n1 0.25
+I5 n1 0 AC 0.8 90
+F6 n2 n3 VSENSE1 0.2
+.ac lin 1 0.212206590789194 0.212206590789194
+.end
+
+* Circuit AC.10
+* source v_{1}(t)=\frac{5}{2}\cos(\frac{4}{5}t+30^o)\,{\rm V}
+* omega = 0.8 rad/s ; f = 0.127323954473516 Hz
+* Node 0 is an arbitrary reference node.
+* Positive element voltage/current direction: first node -> second node.
+* Calculate v4 = V(0,n2)
+* Calculate the reactive power Q5 at nodes (n1,0)
+V1 n3 n2 AC 2.5 30
+G2 n3 n1 n1 0 1.66666666666667
+R3 n1 n2 2
+R4 0 n2 0.5
+C5 n1 0 2
+C6 n2 0 0.2
+.ac lin 1 0.127323954473516 0.127323954473516
+.end
+
+* Circuit AC.11
+* source v2(t): 2\cos(\frac{1}{5}t+15^o); omega=0.2 rad/s; SPICE-SIN phase=105 deg
+* source i3(t): \frac{3}{2}\cos(\frac{1}{5}t-90^o); omega=0.2 rad/s; SPICE-SIN phase=0 deg
+* Node 0 is an arbitrary SPICE reference.
+* Calculate v3 = V(n1,0)
+* Calculate the reactive power Q6 at nodes (n1,n3)
+R1 n1 n3 0.666666666666667
+V2 0 n2 AC 2 15
+I3 n1 0 AC 1.5 -90
+G4 n2 n3 n3 0 2.5
+C5 0 n1 2
+C6 n1 n3 0.5
+I7 n3 0 DC 0
+.ac lin 1 0.0318309886183791 0.0318309886183791
+.end
+
+* Circuit AC.12
+* source v2(t): \cos(\frac{1}{3}t-180^o); omega=0.333333333333333 rad/s; SPICE-SIN phase=-90 deg
+* source v6(t): \cos(\frac{1}{3}t-75^o); omega=0.333333333333333 rad/s; SPICE-SIN phase=15 deg
+* source i7(t): \frac{2}{3}\sin(\frac{1}{3}t+30^o); omega=0.333333333333333 rad/s; SPICE-SIN phase=30 deg
+* Node 0 is an arbitrary SPICE reference.
+* Calculate v3 = V(n2,0)
+* Calculate the reactive power Q5 at nodes (n1,n3)
+G1 0 n1 n1 n3 0.25
+V2 n3 n2 AC 1 180
+L3 n2 0 0.5
+R4 n1 n3 1.25
+C5 n1 n3 0.2
+V6 n2 0 AC 1 -75
+I7 n2 0 AC 0.666666666666667 -60
+.ac lin 1 0.0530516476972984 0.0530516476972984
+.end
+
+* Circuit AC.13
+* Node 0 is an arbitrary SPICE reference.
+* source i1(t): 3\cos(\frac{1}{4}t+15^o); omega=0.25 rad/s; SPICE-SIN phase=105 deg
+* source v4(t): \frac{2}{3}\sin(\frac{1}{4}t+165^o); omega=0.25 rad/s; SPICE-SIN phase=165 deg
+* source v7(t): \frac{3}{2}\cos(\frac{1}{4}t); omega=0.25 rad/s; SPICE-SIN phase=90 deg
+* Calculate v3 = V(n1,0)
+* Calculate the reactive power Q2 at nodes (n1,n3)
+I1 n2 n3 AC 3 15
+L2 n1 n3 0.666666666666667
+G3 n1 0 n1 n3 0.5
+V4 0 n2 AC 0.666666666666667 75
+R5 n1 0 5
+C6 n1 n2 1
+V7 n3 n2 AC 1.5 0
+.ac lin 1 0.0397887357729738 0.0397887357729738
+.end
+
+* Circuit AC.14
+* Node 0 is an arbitrary SPICE reference.
+* source v1(t): \frac{5}{4}\sin(2t-105^o); omega=2 rad/s; SPICE-SIN phase=-105 deg
+* Calculate v7 = V(n3,n1)
+* Calculate the reactive power Q3 at nodes (n2,n1)
+V1 n3 n2 AC 1.25 165
+R2 0 n1 0.666666666666667
+C3 n2 n1 2
+I4 0 n3 DC 1
+I5 n1 0 DC 0.75
+E6 0 n3 n3 n1 1
+L7 n3 n1 0.4
+.ac lin 1 0.318309886183791 0.318309886183791
+.end
+
+* Circuit AC.15
+* Node 0 is an arbitrary SPICE reference.
+* source v1(t): \cos(\frac{5}{2}t); omega=2.5 rad/s; SPICE-SIN phase=90 deg
+* source i3(t): \frac{3}{5}\cos(\frac{5}{2}t-105^o); omega=2.5 rad/s; SPICE-SIN phase=-15 deg
+* Calculate v4 = V(0,n3)
+* Calculate the active power P6 at nodes (n3,n1)
+V1 n2 n1 AC 1 0
+L2 n2 n3 0.5
+I3 0 n1 AC 0.6 -105
+I4 0 n3 DC 0.4
+G5 n1 0 0 n3 0.4
+C6 n3 n1 2
+R7 n3 0 0.333333333333333
+.ac lin 1 0.397887357729738 0.397887357729738
+.end
+
+* Circuit AC.16
+* Node 0 is an arbitrary SPICE reference.
+* source i4(t): \frac{1}{2}\cos(\frac{5}{2}t-165^o); omega=2.5 rad/s; SPICE-SIN phase=-75 deg
+* source i5(t): \cos(\frac{5}{2}t-105^o); omega=2.5 rad/s; SPICE-SIN phase=-15 deg
+* Calculate v7 = V(0,n2)
+* Calculate the active power P1 at nodes (0,n1)
+R1 0 n1 0.666666666666667
+C2 0 n2 1.5
+E3 n3 n2 0 n2 1.66666666666667
+I4 n3 n1 AC 0.5 -165
+I5 n1 0 AC 1 -105
+V6 n3 n1 DC 0.6
+L7 0 n2 1.66666666666667
+.ac lin 1 0.397887357729738 0.397887357729738
+.end
+
+* Circuit AC.17
+* Node 0 is an arbitrary SPICE reference.
+* source v3(t): \frac{5}{2}\cos(\frac{1}{2}t-180^o); omega=0.5 rad/s; SPICE-SIN phase=-90 deg
+* source v4(t): \sin(\frac{1}{2}t-120^o); omega=0.5 rad/s; SPICE-SIN phase=-120 deg
+* source v6(t): \sin(\frac{1}{2}t+75^o); omega=0.5 rad/s; SPICE-SIN phase=75 deg
+* Calculate v7 = V(n1,n3)
+* Calculate the active power P2 at nodes (n1,n3)
+G1 n2 n3 n1 0 2
+R2 n1 n3 0.4
+V3 n1 0 AC 2.5 180
+V4 0 n2 AC 1 150
+L5 0 n1 0.2
+V6 0 n3 AC 1 -15
+L7 n1 n3 0.666666666666667
+.ac lin 1 0.0795774715459477 0.0795774715459477
+.end
+
+* Circuit AC.18
+* Node 0 is an arbitrary SPICE reference.
+* source v2(t): \frac{4}{3}\cos(5t+15^o); omega=5 rad/s; SPICE-SIN phase=105 deg
+* Calculate v5 = V(n3,0)
+* Calculate the reactive power Q1 at nodes (n2,0)
+L1 n2 0 1
+V2 n1 n3 AC 1.33333333333333 15
+I3 0 n1 DC 0.333333333333333
+E4 n2 n3 n2 0 2.5
+C5 n3 0 1
+R6 n3 0 0.6
+I7 n2 n1 DC 0.5
+.ac lin 1 0.795774715459477 0.795774715459477
+.end
+
+* Circuit AC.19
+* Node 0 is an arbitrary SPICE reference.
+* source v3(t): \frac{1}{5}\cos(4t+105^o); omega=4 rad/s; SPICE-SIN phase=-165 deg
+* source v4(t): \frac{3}{5}\cos(4t+15^o); omega=4 rad/s; SPICE-SIN phase=105 deg
+* source v7(t): \frac{5}{2}\cos(4t-165^o); omega=4 rad/s; SPICE-SIN phase=-75 deg
+* Calculate v2 = V(n3,n2)
+* Calculate the reactive power Q6 at nodes (n1,n3)
+F1 0 n2 VSENSE3 0.6
+L2 n3 n2 1.5
+V3 n1 ns3 AC 0.2 105
+VSENSE3 ns3 0 0
+V4 n3 n1 AC 0.6 15
+R5 0 n1 1.25
+L6 n1 n3 0.4
+V7 n2 0 AC 2.5 -165
+.ac lin 1 0.636619772367581 0.636619772367581
+.end
+
+* Circuit AC.20
+* Node 0 is an arbitrary SPICE reference.
+* source i2(t): \frac{5}{2}\cos(\frac{3}{4}t+135^o); omega=0.75 rad/s; SPICE-SIN phase=-135 deg
+* source i5(t): \sin(\frac{3}{4}t-105^o); omega=0.75 rad/s; SPICE-SIN phase=-105 deg
+* Calculate v1 = V(0,n1)
+* Calculate the active power P6 at nodes (n3,n1)
+C1 0 n1 0.8
+I2 0 n2 AC 2.5 135
+C3 n3 n1 0.2
+V4 n3 n2 DC 1.25
+I5 0 ns5 AC 1 165
+VSENSE5 ns5 n2 0
+R6 n3 n1 0.5
+H7 n2 0 VSENSE5 0.5
+.ac lin 1 0.119366207318922 0.119366207318922
+.end
+
+* Circuit AC.21
+* omega = 0.333333333333333 rad/s ; f = 0.0530516476972984 Hz
+* Node 0 is an arbitrary SPICE reference.
+* AC phasors use cosine reference.
+* source i5(t) = \sin(\frac{1}{3}t-150^o) ; AC 1 120 deg
+* source i6(t) = \frac{2}{5}\cos(\frac{1}{3}t+105^o) ; AC 0.4 105 deg
+* Calculate v2 = V(n1,0)
+* Calculate the reactive power Q7 at nodes (n4,n1)
+L1 n2 0 1
+R2 n1 0 2.5
+R3 n1 ns3 0.333333333333333
+VSENSE3 ns3 n3 0
+L4 n3 n4 0.5
+I5 n2 n4 AC 1 120
+I6 n4 n3 AC 0.4 105
+R7 n4 n1 0.8
+H8 0 n2 VSENSE3 0.666666666666667
+L9 n2 n3 0.333333333333333
+.ac lin 1 0.0530516476972984 0.0530516476972984
+.end
+
+* Circuit AC.22
+* omega = 0.8 rad/s ; f = 0.127323954473516 Hz
+* Node 0 is an arbitrary SPICE reference.
+* AC phasors use cosine reference.
+* source i3(t) = 4\sin(\frac{4}{5}t+120^o) ; AC 4 30 deg
+* source v9(t) = 4\sin(\frac{4}{5}t+165^o) ; AC 4 75 deg
+* Calculate v4 = V(n2,n3)
+* Calculate the reactive power Q7 at nodes (n3,0)
+R1 n2 n4 0.75
+R2 0 n1 1
+I3 n3 n4 AC 4 30
+R4 n2 n3 0.333333333333333
+H5 n2 0 VSENSE9 1.25
+L6 n4 n2 0.333333333333333
+L7 n3 0 0.75
+C8 n3 n4 0.25
+V9 n3 ns9 AC 4 75
+VSENSE9 ns9 n1 0
+.ac lin 1 0.127323954473516 0.127323954473516
+.end
+
+* Circuit AC.23
+* omega = 1 rad/s ; f = 0.159154943091895 Hz
+* Node 0 is an arbitrary SPICE reference.
+* AC phasors use cosine reference.
+* source i6(t) = \frac{1}{5}\sin(t+150^o) ; AC 0.2 60 deg
+* source i7(t) = \frac{1}{2}\cos(t-45^o) ; AC 0.5 -45 deg
+* Calculate v4 = V(n1,0)
+* Calculate the active power P2 at nodes (n4,n2)
+G1 n3 n4 n4 n2 1.33333333333333
+R2 n4 n2 0.5
+R3 n1 n2 0.25
+C4 n1 0 5
+L5 0 n3 5
+I6 0 n1 AC 0.2 60
+I7 0 n3 AC 0.5 -45
+R8 n3 n4 1
+L9 n1 n2 0.4
+.ac lin 1 0.159154943091895 0.159154943091895
+.end
+
+* Circuit AC.24
+* omega = 0.5 rad/s ; f = 0.0795774715459477 Hz
+* Node 0 is an arbitrary SPICE reference.
+* AC phasors use cosine reference.
+* source i1(t) = \frac{2}{5}\cos(\frac{1}{2}t-15^o) ; AC 0.4 -15 deg
+* source i7(t) = \frac{5}{4}\cos(\frac{1}{2}t-105^o) ; AC 1.25 -105 deg
+* Calculate v1 = V(n4,n2)
+* Calculate the reactive power Q2 at nodes (n1,n3)
+I1 n4 n2 AC 0.4 -15
+L2 n1 n3 0.333333333333333
+R3 0 n1 2
+E4 0 n3 n1 n3 0.75
+L5 0 n3 1
+L6 0 n1 0.666666666666667
+I7 n2 n1 AC 1.25 -105
+R8 n3 n2 2
+R9 n3 n4 1.25
+.ac lin 1 0.0795774715459477 0.0795774715459477
+.end
+
+* Circuit AC.25
+* omega = 1 rad/s ; f = 0.159154943091895 Hz
+* Node 0 is an arbitrary SPICE reference.
+* AC phasors use cosine reference.
+* source i1(t) = 5\cos(t-45^o) ; AC 5 -45 deg
+* source i2(t) = \sin(t+60^o) ; AC 1 -30 deg
+* Calculate v2 = V(n1,n3)
+* Calculate the active power P7 at nodes (n1,0)
+I1 n2 0 AC 5 -45
+I2 n1 n3 AC 1 -30
+R3 n4 n1 1
+R4 n2 0 1.25
+E5 n3 n4 n1 n3 0.25
+C6 n2 0 1
+R7 n1 0 4
+L8 n1 n3 1.33333333333333
+C9 n2 n3 1.66666666666667
+.ac lin 1 0.159154943091895 0.159154943091895
+.end
+
+* Circuit AC.26
+* omega = 0.5 rad/s ; f = 0.0795774715459477 Hz
+* Node 0 is an arbitrary SPICE reference.
+* AC phasors use cosine reference.
+* source v5(t) = 2\sin(\frac{1}{2}t+180^o) ; AC 2 90 deg
+* source i8(t) = \frac{1}{3}\cos(\frac{1}{2}t-165^o) ; AC 0.333333333333333 -165 deg
+* Calculate v3 = V(n2,n4)
+* Calculate the active power P7 at nodes (n3,0)
+C1 n2 n3 2.5
+C2 n1 ns2 0.666666666666667
+VSENSE2 ns2 n4 0
+R3 n2 n4 0.5
+C4 n1 0 1
+V5 n3 0 AC 2 90
+R6 n1 n2 1
+R7 n3 0 2
+I8 0 n2 AC 0.333333333333333 -165
+F9 n4 n3 VSENSE2 0.5
+.ac lin 1 0.0795774715459477 0.0795774715459477
+.end
+
+* Circuit AC.27
+* omega = 3 rad/s ; f = 0.477464829275686 Hz
+* Node 0 is an arbitrary SPICE reference.
+* AC phasors use cosine reference.
+* source v5(t) = \frac{5}{4}\cos(3t-105^o) ; AC 1.25 -105 deg
+* source v8(t) = \frac{1}{4}\cos(3t+90^o) ; AC 0.25 90 deg
+* Calculate v4 = V(n2,n3)
+* Calculate the reactive power Q3 at nodes (n3,n4)
+C1 n1 0 1
+R2 n2 n4 0.5
+L3 n3 n4 1
+R4 n2 n3 0.8
+V5 n4 n1 AC 1.25 -105
+R6 n3 n2 4
+G7 n4 n2 n2 n3 1.66666666666667
+V8 n1 n3 AC 0.25 90
+C9 n2 0 4
+.ac lin 1 0.477464829275686 0.477464829275686
+.end
+
+* Circuit AC.28
+* omega = 0.5 rad/s ; f = 0.0795774715459477 Hz
+* Node 0 is an arbitrary SPICE reference.
+* AC phasors use cosine reference.
+* source i5(t) = \frac{5}{2}\cos(\frac{1}{2}t+45^o) ; AC 2.5 45 deg
+* source i8(t) = \frac{4}{5}\cos(\frac{1}{2}t-45^o) ; AC 0.8 -45 deg
+* Calculate v8 = V(n1,n2)
+* Calculate the active power P4 at nodes (0,n2)
+C1 n4 ns1 3
+VSENSE1 ns1 n3 0
+R2 n2 n4 4
+F3 n3 0 VSENSE1 0.6
+R4 0 n2 2
+I5 n1 n4 AC 2.5 45
+C6 n1 n4 0.5
+C7 n2 n3 0.333333333333333
+I8 n1 n2 AC 0.8 -45
+R9 n1 0 4
+.ac lin 1 0.0795774715459477 0.0795774715459477
+.end
+
+* Circuit AC.29
+* omega = 0.6 rad/s ; f = 0.0954929658551372 Hz
+* Node 0 is an arbitrary SPICE reference.
+* AC phasors use cosine reference.
+* source v2(t) = \sin(\frac{3}{5}t+30^o) ; AC 1 -60 deg
+* source i9(t) = \sin(\frac{3}{5}t+15^o) ; AC 1 -75 deg
+* Calculate v4 = V(n1,0)
+* Calculate the active power P3 at nodes (n4,n2)
+R1 n2 n3 2
+V2 n3 n4 AC 1 -60
+R3 n4 n2 0.4
+R4 n1 0 0.5
+C5 n1 0 1
+C6 n1 n4 1
+E7 n2 n1 n3 0 1.25
+L8 n3 0 0.6
+I9 n2 0 AC 1 -75
+.ac lin 1 0.0954929658551372 0.0954929658551372
+.end
+
+* Circuit AC.30
+* omega = 0.75 rad/s ; f = 0.119366207318922 Hz
+* Node 0 is an arbitrary SPICE reference.
+* AC phasors use cosine reference.
+* source v2(t) = \frac{3}{4}\cos(\frac{3}{4}t-45^o) ; AC 0.75 -45 deg
+* source v5(t) = \frac{3}{4}\sin(\frac{3}{4}t-120^o) ; AC 0.75 150 deg
+* Calculate v6 = V(0,n4)
+* Calculate the active power P9 at nodes (n1,ns9)
+C1 n2 n3 1.33333333333333
+V2 0 n1 AC 0.75 -45
+C3 n4 0 0.2
+F4 n3 n1 VSENSE9 0.5
+V5 n2 n4 AC 0.75 150
+L6 0 n4 1.25
+R7 0 n4 0.5
+R8 n2 n3 0.75
+R9 n1 ns9 0.4
+VSENSE9 ns9 n2 0
+.ac lin 1 0.119366207318922 0.119366207318922
+.end
